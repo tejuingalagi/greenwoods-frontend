@@ -1,0 +1,121 @@
+.spec-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px 16px;
+  background: var(--cream);
+  border-bottom: 1px solid #eadfca;
+}
+
+.spec-tab {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 999px;
+  background: #f1eadb;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.spec-tab.active {
+  background: var(--green-dark);
+  color: #ffffff;
+}
+
+.spec-section {
+  padding: 56px 0 80px;
+  background: var(--cream);
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .spec-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .spec-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Cards in the same row get the same height */
+.spec-grid > .reveal,
+.spec-card {
+  height: 100%;
+}
+
+.spec-card {
+  overflow: hidden;
+  border: 1px solid #eadfca;
+  border-radius: 12px;
+  background: #fdfaf4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.spec-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e3ecdf;
+  background: #f2f8f2;
+  color: var(--green-dark);
+}
+
+.spec-card-head h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 16px;
+  padding: 14px 24px;
+  border-top: 1px solid #eadfca;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.spec-card-head + .spec-row { border-top: none; }
+
+.spec-row span:first-child {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.spec-row span:last-child { color: var(--charcoal-soft); }
+
+.spec-cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.spec-button {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 4px;
+  background: var(--terracotta);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.spec-empty {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--charcoal-muted);
+}

@@ -1,0 +1,194 @@
+.enq-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.enq-count {
+  font-size: 14px;
+  color: var(--charcoal-muted);
+}
+
+.enq-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.enq-toolbar label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--charcoal-soft);
+}
+
+.enq-filter,
+.enq-select {
+  height: 38px;
+  padding: 0 10px;
+  border: 2px solid #d9cdb0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--charcoal);
+}
+
+.enq-refresh {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid #d5c29a;
+  border-radius: 6px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.enq-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #fbf8f1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.enq-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.enq-table th {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e6dcc6;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--charcoal-muted);
+}
+
+.enq-table td {
+  padding: 12px 14px;
+  vertical-align: top;
+  border-bottom: 1px solid #eee4cf;
+}
+
+.enq-table small {
+  color: var(--charcoal-muted);
+}
+
+.enq-source {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f1eadb;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.enq-select[data-status="NEW"] { border-color: #b5532d; color: #b5532d; }
+.enq-select[data-status="CONTACTED"] { border-color: #2f6fa8; color: #2f6fa8; }
+.enq-select[data-status="SITE_VISIT_SCHEDULED"] { border-color: #7a4fb3; color: #7a4fb3; }
+.enq-select[data-status="VISITED"] { border-color: #2a8a8a; color: #2a8a8a; }
+.enq-select[data-status="BOOKED"] { border-color: #2e6b3a; color: #2e6b3a; }
+.enq-select[data-status="CLOSED"] { border-color: #6b6b6b; color: #6b6b6b; }
+
+.enq-save {
+  display: block;
+  margin-top: 8px;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 4px;
+  background: var(--ink);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.enq-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.enq-msg-ok {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #2e6b3a;
+}
+
+.enq-msg-err {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #b3261e;
+}
+
+.enq-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: 1px solid #d5c29a;
+  border-radius: 4px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.enq-detail-row td {
+  background: #f7f1e3;
+}
+
+.enq-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px 24px;
+}
+
+.enq-wide {
+  grid-column: 1 / -1;
+}
+
+.enq-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--charcoal-muted);
+}
+
+.enq-detail-grid p {
+  margin: 0;
+}
+
+.enq-pre {
+  white-space: pre-wrap;
+}
+
+.enq-detail-grid textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #d9cdb0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.enq-state {
+  padding: 24px 0;
+  color: var(--charcoal-muted);
+}
+
+.enq-error {
+  margin-bottom: 12px;
+  color: #b3261e;
+}

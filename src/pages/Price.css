@@ -1,0 +1,217 @@
+.price-section {
+  padding: 70px 0;
+  background: var(--cream);
+}
+
+.price-charges { padding-top: 40px; }
+
+/* Three plan cards */
+.price-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .price-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.price-cards > .reveal,
+.price-card { height: 100%; }
+
+.price-card {
+  padding: 32px;
+  border: 1px solid #eadfca;
+  border-radius: 12px;
+  background: #fbf8f1;
+  text-align: center;
+}
+
+.price-title-box {
+  padding: 16px 12px;
+  border: 1px solid #d9cdb4;
+  border-radius: 8px;
+}
+
+.price-title-box h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.price-title-box p {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--charcoal-muted);
+}
+
+.price-from {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--charcoal-muted);
+}
+
+.price-amount {
+  margin: 8px 0 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e3d3a6;
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.price-details {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+.price-details div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-details span { color: var(--charcoal-muted); }
+.price-details strong { color: var(--ink); }
+
+.price-button {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: var(--terracotta);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+/* Taxes */
+.charges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 36px auto 24px;
+}
+
+@media (min-width: 768px) {
+  .charges-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.charge-tile {
+  padding: 28px 16px;
+  border: 1px solid #eadfca;
+  border-radius: 8px;
+  background: #fbf8f1;
+  text-align: center;
+}
+
+.charge-value {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.charge-label {
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--charcoal-muted);
+}
+
+.charges-total {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid #cfe3d0;
+  border-radius: 8px;
+  background: #f2f8f2;
+  text-align: center;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+
+.charges-total-value {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+/* EMI calculator */
+.emi-card {
+  max-width: 740px;
+  margin: 36px auto 0;
+  padding: 32px;
+  border: 1px solid #eadfca;
+  border-radius: 12px;
+  background: #fbf8f1;
+}
+
+.emi-field { margin-bottom: 28px; }
+
+.emi-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.emi-top span {
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+/* accent-color paints the slider thumb and the filled part green */
+.emi-field input[type='range'] {
+  width: 100%;
+  accent-color: var(--green-dark);
+}
+
+.emi-result {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid #cfe3d0;
+  border-radius: 8px;
+  background: #f2f8f2;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .emi-result { grid-template-columns: repeat(3, 1fr); }
+}
+
+.emi-result p {
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--charcoal-muted);
+}
+
+.emi-result strong {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.emi-result .emi-big { font-size: 26px; }
+
+.emi-note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--charcoal-muted);
+}

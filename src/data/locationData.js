@@ -1,0 +1,31 @@
+export const landmarks = [
+  ['Gandi Maisamma X Roads', '6 min'],
+  ['Gajularamaram', '7 min'],
+  ['ORR Exit No.5 (Dundigal)', '10 min'],
+  ['Bowrampet', '10 min'],
+  ['Bachupally', '12 min'],
+  ["Rao's Cricket Ground", '12 min'],
+  ['Lulu Mall, Kukatpally', '20 min'],
+  ['Miyapur', '23 min'],
+  ['Medical Devices Park', '23 min'],
+  ['HITEC City', '27 min'],
+  ['Financial District', '40 min'],
+]
+
+export const institutions = [
+  ['The Creek International School', '6 min'],
+  ['Sri Sloka School', '7 min'],
+  ['Delhi Public School', '7 min'],
+  ['Ambitus World School', '8 min'],
+  ['Sri Veda Universe The School', '8 min'],
+  ['VNRVJIET College', '8 min'],
+  ['Oakridge International School', '9 min'],
+  ['Silver Oaks International School', '12 min'],
+  ['Sri Vatsal Gurukul Vidyalaya', '14 min'],
+  ['DRK College of Engineering', '15 min'],
+  ['BVRIT College', '16 min'],
+  ['Narayana IIT JEE College', '17 min'],
+  ['Gokaraju Rangaraju Institute of Engg. & Technology', '17 min'],
+  ['JNTU Kukatpally', '18 min'],
+  ['Sri Vidyanjali Primary School', '19 min'],
+]

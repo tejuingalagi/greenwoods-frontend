@@ -1,0 +1,64 @@
+.floating {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.float-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.float-btn:hover { transform: scale(1.06); }
+
+.float-dark { background: var(--green-dark); }
+.float-orange { background: var(--terracotta); }
+.float-green { background: #25d366; }
+
+/* Small name label that slides out to the left on hover or tap */
+.float-label {
+  position: absolute;
+  right: 68px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.float-btn:hover .float-label,
+.float-btn:focus-visible .float-label {
+  opacity: 1;
+  transform: none;
+}
+
+.float-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cream);
+  border-radius: 50%;
+  background: var(--terracotta);
+}

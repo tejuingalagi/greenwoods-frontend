@@ -1,0 +1,132 @@
+.overview {
+  padding: 80px 0;
+  background: var(--cream);
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .highlights { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .highlights { gap: 64px; }
+}
+
+.highlight-number {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--green-dark);
+}
+
+.highlight-unit {
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--charcoal-muted);
+}
+
+.highlight-title {
+  margin: 12px 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .highlight-title { font-size: 30px; }
+}
+
+.highlight-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--charcoal-muted);
+}
+
+/* Stats section: its own block with a line above and below */
+.overview-stats {
+  padding: 96px 0;
+  background: var(--cream);
+  border-top: 1px solid #eadfca;
+  border-bottom: 1px solid #eadfca;
+}
+
+.overview-title {
+  text-align: center;
+}
+
+.overview-title h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 52px);
+  color: var(--ink);
+}
+
+.overview-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--charcoal-muted);
+}
+
+/* Desktop first: 9 columns in one row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  margin-top: 56px;
+}
+
+.stat {
+  min-height: 120px;
+  padding: 4px 16px;
+  text-align: center;
+  border-left: 1px solid #d5c29a;
+}
+
+.stat:first-child {
+  border-left: none;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.stat-small .stat-value {
+  font-size: 24px;
+}
+
+.stat-label {
+  margin-top: 10px;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 1.5px;
+  color: var(--charcoal-muted);
+}
+
+/* Tablet: 3 columns */
+@media (max-width: 1023px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
+  }
+  .stat:nth-child(3n + 1) { border-left: none; }
+}
+
+/* Phone: 2 columns */
+@media (max-width: 639px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(n) { border-left: 1px solid #d5c29a; }
+  .stat:nth-child(odd) { border-left: none; }
+}
