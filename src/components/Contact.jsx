@@ -16,7 +16,7 @@ const emptyForm = {
   budget: 'Not Sure', callTime: 'Anytime', message: '', homeLoan: '',
 }
 
-function Contact({ onEnquire }) {
+function Contact({ onSiteVisit }) {
   const [form, setForm] = useState(emptyForm)
   const [status, setStatus] = useState('idle') // idle | sending | success
   const [error, setError] = useState('')
@@ -208,7 +208,7 @@ function Contact({ onEnquire }) {
               className="visit-whatsapp">
               <MessageCircle size={16} /> Chat on WhatsApp
             </a>
-            <button className="visit-site" onClick={onEnquire}>
+           <button className="visit-site" onClick={onSiteVisit}>
               <Calendar size={16} /> Book a Site Visit
             </button>
           </div>

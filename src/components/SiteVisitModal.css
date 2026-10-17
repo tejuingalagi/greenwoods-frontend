@@ -1,0 +1,20 @@
+.sv-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 16px;
+}
+
+@media (min-width: 520px) {
+  .sv-row { grid-template-columns: 1fr 1fr; }
+}
+
+.sv-summary {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: #f1eadb;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--ink);
+}

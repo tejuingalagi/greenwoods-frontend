@@ -3,6 +3,7 @@ import { LayoutGrid } from 'lucide-react'
 import Reveal from './Reveal'
 import './MasterPlan.css'
 import masterPlan from '../assets/master-plan.jpg'
+import { Link } from 'react-router-dom'
 
 // x and y are the marker position as a % of the image
 const places = [
@@ -99,9 +100,9 @@ function MasterPlan() {
         </div>
 
         <div className="plan-cta">
-          <a href="#floor-plans" className="plan-button">
+                    <Link to="/floor-plans" className="plan-button">
             <LayoutGrid size={14} /> VIEW FLOOR PLANS
-          </a>
+          </Link>
         </div>
       </div>
     </section>

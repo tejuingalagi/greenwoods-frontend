@@ -6,6 +6,8 @@ import Reveal from './Reveal'
 import './Amenities.css'
 import clubhouse from '../assets/clubhouse.webp'
 import pool from '../assets/landscape-pool.webp'
+import { Link } from 'react-router-dom'
+import { amenityList } from '../data/amenitiesData'
 
 const amenities = [
   { icon: Zap, name: 'Centralized A/c Gym' },
@@ -60,9 +62,9 @@ function Amenities() {
         </div>
 
         <div className="amenities-more">
-          <a href="#amenities" className="amenities-button">
-            VIEW ALL 38 AMENITIES <ArrowRight size={16} />
-          </a>
+          <Link to="/amenities" className="amenities-button">
+  VIEW ALL {amenityList.length} AMENITIES <ArrowRight size={16} />
+</Link>
         </div>
       </div>
     </section>

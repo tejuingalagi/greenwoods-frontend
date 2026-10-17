@@ -44,7 +44,7 @@ function Navbar({ onEnquire }) {
           )}
         </div>
 
-        <Link to="/#master-plan" onClick={closeAll}>Floor Plans</Link>
+        <NavLink to="/floor-plans" onClick={closeAll}>Floor Plans</NavLink>
         <NavLink to="/specifications" onClick={closeAll}>Specifications</NavLink>
         <Link to="/#amenities" onClick={closeAll}>Amenities</Link>
         <Link to="/#videos" onClick={closeAll}>Progress Videos</Link>

@@ -9,10 +9,10 @@ import Location from '../components/Location'
 import ProgressVideo from '../components/ProgressVideo'
 import Contact from '../components/Contact'
 
-function Home({ onEnquire }) {
+function Home({ onSiteVisit }) {
   return (
     <>
-      <Hero onEnquire={onEnquire} />
+      <Hero onSiteVisit={onSiteVisit} />
       <Overview />
       <WhyChoose />
       <WhoCallsHome />
@@ -21,7 +21,7 @@ function Home({ onEnquire }) {
       <Gallery />
       <Location />
       <ProgressVideo />
-      <Contact onEnquire={onEnquire} />
+      <Contact onSiteVisit={onSiteVisit} />
     </>
   )
 }

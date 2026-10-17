@@ -4,10 +4,11 @@ import './Hero.css'
 import slide1 from '../assets/hero.webp'
 import slide2 from '../assets/hero1.webp'
 import slide3 from '../assets/hero2.webp'
+import { Link } from 'react-router-dom'
 
 const slides = [slide1, slide2, slide3]
 
-function Hero({ onEnquire }) {
+function Hero({ onSiteVisit }) {
   const [current, setCurrent] = useState(0)
 
   // Every time the slide changes, wait 5 seconds, then go to the next one
@@ -69,20 +70,14 @@ function Hero({ onEnquire }) {
           1100-acre urban reserve forest.
         </p>
 
-        <div className="hero-buttons">
-          <button
-            className="hero-btn-solid"
-            onClick={onEnquire}
-          >
+                <div className="hero-buttons">
+          <button className="hero-btn-solid" onClick={onSiteVisit}>
             Book a Site Visit
           </button>
 
-          <a
-            href="#master-plan"
-            className="hero-btn-outline"
-          >
+          <Link to="/floor-plans" className="hero-btn-outline">
             View Floor Plans
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -15,18 +15,31 @@ import ProtectedRoute from './auth/ProtectedRoute'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminEnquiries from './pages/admin/AdminEnquiries'
+import FloorPlansPage from './pages/FloorPlansPage'
+import AmenitiesPage from './pages/AmenitiesPage'
+import SiteVisitModal from './components/SiteVisitModal'
 
-// Your existing public website, unchanged
+
 function PublicSite() {
   const [enquiryOpen, setEnquiryOpen] = useState(false)
+  const [siteVisitOpen, setSiteVisitOpen] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setEnquiryOpen(true), 2000)
     return () => clearTimeout(timer)
   }, [])
 
-  const openEnquiry = () => setEnquiryOpen(true)
+  const openEnquiry = () => {
+    setSiteVisitOpen(false)
+    setEnquiryOpen(true)
+  }
   const closeEnquiry = () => setEnquiryOpen(false)
+
+  const openSiteVisit = () => {
+    setEnquiryOpen(false)
+    setSiteVisitOpen(true)
+  }
+  const closeSiteVisit = () => setSiteVisitOpen(false)
 
   return (
     <>
@@ -34,16 +47,19 @@ function PublicSite() {
       <Navbar onEnquire={openEnquiry} />
       <main>
         <Routes>
-          <Route path="/" element={<Home onEnquire={openEnquiry} />} />
+          <Route path="/" element={<Home onEnquire={openEnquiry} onSiteVisit={openSiteVisit} />} />
           <Route path="/specifications" element={<Specifications onEnquire={openEnquiry} />} />
           <Route path="/price" element={<Price onEnquire={openEnquiry} />} />
           <Route path="/location" element={<LocationPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/amenities" element={<AmenitiesPage />} />
+          <Route path="/floor-plans" element={<FloorPlansPage onSiteVisit={openSiteVisit} />} />
         </Routes>
       </main>
       <Footer />
       <FloatingButtons onEnquire={openEnquiry} />
       <EnquiryModal open={enquiryOpen} onClose={closeEnquiry} />
+      <SiteVisitModal open={siteVisitOpen} onClose={closeSiteVisit} />
     </>
   )
 }
