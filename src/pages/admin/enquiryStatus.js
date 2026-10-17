@@ -7,10 +7,13 @@ export const STATUSES = [
   { value: 'CLOSED', label: 'Closed' },
 ]
 
-const SOURCES = {
-  POPUP: 'Popup',
-  CONTACT_FORM: 'Contact form',
-  SITE_VISIT: 'Site visit',
-}
+export const SOURCE_OPTIONS = [
+  { value: 'POPUP', label: 'Popup' },
+  { value: 'CONTACT_FORM', label: 'Contact form' },
+  { value: 'SITE_VISIT', label: 'Site visit' },
+  { value: 'FLOOR_PLAN', label: 'Floor plan' },
+]
+
+const SOURCES = Object.fromEntries(SOURCE_OPTIONS.map((s) => [s.value, s.label]))
 
 export const sourceLabel = (source) => SOURCES[source] ?? source

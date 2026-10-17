@@ -1,7 +1,6 @@
-
 import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import { updateEnquiryStatus } from '../../api/adminEnquiryApi'
+import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react'
+import { updateEnquiryStatus, deleteEnquiry } from '../../api/adminEnquiryApi'
 import { getApiErrorMessage } from '../../api/enquiryApi'
 import { STATUSES, sourceLabel } from './enquiryStatus'
 
@@ -36,11 +35,12 @@ function yesNo(value) {
   return '—'
 }
 
-function EnquiryRow({ enquiry, onUpdated }) {
+function EnquiryRow({ enquiry, onUpdated, onDeleted }) {
   const [status, setStatus] = useState(enquiry.status)
   const [notes, setNotes] = useState(enquiry.notes ?? '')
   const [open, setOpen] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [feedback, setFeedback] = useState({
     text: '',
     isError: false,
@@ -82,6 +82,27 @@ function EnquiryRow({ enquiry, onUpdated }) {
       })
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    const confirmed = window.confirm(
+      `Delete the enquiry from ${enquiry.name}? This cannot be undone.`,
+    )
+    if (!confirmed) return
+
+    setDeleting(true)
+    setFeedback({ text: '', isError: false })
+
+    try {
+      await deleteEnquiry(enquiry.id)
+      onDeleted(enquiry.id)
+    } catch (err) {
+      setFeedback({
+        text: getApiErrorMessage(err),
+        isError: true,
+      })
+      setDeleting(false)
     }
   }
 
@@ -249,6 +270,17 @@ function EnquiryRow({ enquiry, onUpdated }) {
                   value={notes}
                   onChange={handleNotesChange}
                 />
+
+                <button
+                  type="button"
+                  className="enq-delete"
+                  onClick={handleDelete}
+                  disabled={deleting}
+                >
+                  <Trash2 size={14} />
+                  {' '}
+                  {deleting ? 'Deleting...' : 'Delete enquiry'}
+                </button>
               </div>
             </div>
           </td>

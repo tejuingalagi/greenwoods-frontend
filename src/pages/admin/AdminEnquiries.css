@@ -197,3 +197,22 @@
   margin-top: 6px;
   white-space: nowrap;
 }
+.enq-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #d9a7a2;
+  border-radius: 4px;
+  background: transparent;
+  color: #b3261e;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.enq-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

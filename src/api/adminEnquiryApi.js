@@ -5,3 +5,5 @@ export const fetchEnquiries = (status) =>
 
 export const updateEnquiryStatus = (id, status, notes) =>
   api.put(`/admin/enquiries/${id}/status`, { status, notes })
+
+export const deleteEnquiry = (id) => api.delete(`/admin/enquiries/${id}`)

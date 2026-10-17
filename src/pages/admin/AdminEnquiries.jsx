@@ -1,13 +1,15 @@
+
 import { useEffect, useState } from 'react'
 import { RefreshCw } from 'lucide-react'
 import { fetchEnquiries } from '../../api/adminEnquiryApi'
 import { getApiErrorMessage } from '../../api/enquiryApi'
 import EnquiryRow from './EnquiryRow'
-import { STATUSES } from './enquiryStatus'
+import { STATUSES, SOURCE_OPTIONS } from './enquiryStatus'
 import './AdminEnquiries.css'
 
 function AdminEnquiries() {
   const [filter, setFilter] = useState('')
+  const [sourceFilter, setSourceFilter] = useState('')
   const [enquiries, setEnquiries] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -18,13 +20,20 @@ function AdminEnquiries() {
 
     fetchEnquiries(filter)
       .then(({ data }) => {
-        if (!cancelled) setEnquiries(data)
+        if (!cancelled) {
+          setEnquiries(data)
+          setError('')
+        }
       })
       .catch((err) => {
-        if (!cancelled) setError(getApiErrorMessage(err))
+        if (!cancelled) {
+          setError(getApiErrorMessage(err))
+        }
       })
       .finally(() => {
-        if (!cancelled) setLoading(false)
+        if (!cancelled) {
+          setLoading(false)
+        }
       })
 
     return () => {
@@ -41,44 +50,101 @@ function AdminEnquiries() {
   const handleRefresh = () => {
     setLoading(true)
     setError('')
-    setReloadKey((k) => k + 1)
+    setReloadKey((key) => key + 1)
   }
 
   const handleUpdated = (updated) => {
-    setEnquiries((list) => list.map((e) => (e.id === updated.id ? updated : e)))
+    setEnquiries((list) =>
+      list.map((enquiry) =>
+        enquiry.id === updated.id ? updated : enquiry,
+      ),
+    )
   }
+
+  const handleDeleted = (id) => {
+    setEnquiries((list) =>
+      list.filter((enquiry) => enquiry.id !== id),
+    )
+  }
+
+  // Filter by form type on the enquiries already loaded.
+  const visible = sourceFilter
+    ? enquiries.filter((enquiry) => enquiry.source === sourceFilter)
+    : enquiries
 
   return (
     <div>
       <div className="enq-header">
         <h1 className="admin-page-title">Enquiries</h1>
-        {!loading && <span className="enq-count">{enquiries.length} shown</span>}
+
+        {!loading && (
+          <span className="enq-count">
+            {visible.length} shown
+          </span>
+        )}
       </div>
 
       <div className="enq-toolbar">
         <label htmlFor="enq-filter">STATUS</label>
+
         <select
-          id="enq-filter" className="enq-filter"
-          value={filter} onChange={handleFilterChange}
+          id="enq-filter"
+          className="enq-filter"
+          value={filter}
+          onChange={handleFilterChange}
         >
           <option value="">All</option>
-          {STATUSES.map((s) => (
-            <option key={s.value} value={s.value}>{s.label}</option>
+
+          {STATUSES.map((status) => (
+            <option key={status.value} value={status.value}>
+              {status.label}
+            </option>
           ))}
         </select>
 
-        <button type="button" className="enq-refresh" onClick={handleRefresh}>
-          <RefreshCw size={16} /> Refresh
+        <label htmlFor="enq-source">FORM</label>
+
+        <select
+          id="enq-source"
+          className="enq-filter"
+          value={sourceFilter}
+          onChange={(e) => setSourceFilter(e.target.value)}
+        >
+          <option value="">All forms</option>
+
+          {SOURCE_OPTIONS.map((source) => (
+            <option key={source.value} value={source.value}>
+              {source.label}
+            </option>
+          ))}
+        </select>
+
+        <button
+          type="button"
+          className="enq-refresh"
+          onClick={handleRefresh}
+          disabled={loading}
+        >
+          <RefreshCw size={16} />
+          {' '}Refresh
         </button>
       </div>
 
-      {error && <p className="enq-error" role="alert">{error}</p>}
-      {loading && <p className="enq-state">Loading enquiries...</p>}
-      {!loading && !error && enquiries.length === 0 && (
+      {error && (
+        <p className="enq-error" role="alert">
+          {error}
+        </p>
+      )}
+
+      {loading && (
+        <p className="enq-state">Loading enquiries...</p>
+      )}
+
+      {!loading && !error && visible.length === 0 && (
         <p className="enq-state">No enquiries found.</p>
       )}
 
-      {!loading && enquiries.length > 0 && (
+      {!loading && !error && visible.length > 0 && (
         <div className="enq-table-wrap">
           <table className="enq-table">
             <thead>
@@ -92,12 +158,14 @@ function AdminEnquiries() {
                 <th></th>
               </tr>
             </thead>
+
             <tbody>
-              {enquiries.map((enquiry) => (
+              {visible.map((enquiry) => (
                 <EnquiryRow
                   key={enquiry.id}
                   enquiry={enquiry}
                   onUpdated={handleUpdated}
+                  onDeleted={handleDeleted}
                 />
               ))}
             </tbody>
