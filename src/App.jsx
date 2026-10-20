@@ -18,6 +18,8 @@ import AdminEnquiries from './pages/admin/AdminEnquiries'
 import FloorPlansPage from './pages/FloorPlansPage'
 import AmenitiesPage from './pages/AmenitiesPage'
 import SiteVisitModal from './components/SiteVisitModal'
+import AdminMedia from './pages/admin/AdminMedia'
+import AdminGallery from './pages/admin/AdminGallery'
 
 
 function PublicSite() {
@@ -64,15 +66,24 @@ function PublicSite() {
   )
 }
 
+
 function App() {
   return (
     <Routes>
-      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin/login"
+        element={<AdminLogin />}
+      />
 
       <Route path="/admin" element={<ProtectedRoute />}>
         <Route element={<AdminLayout />}>
           <Route index element={<AdminEnquiries />} />
-          <Route path="*" element={<Navigate to="/admin" replace />} />
+          <Route path="gallery" element={<AdminGallery />} />
+          <Route path="media" element={<AdminMedia />} />
+          <Route
+            path="*"
+            element={<Navigate to="/admin" replace />}
+          />
         </Route>
       </Route>
 
@@ -80,5 +91,6 @@ function App() {
     </Routes>
   )
 }
+
 
 export default App

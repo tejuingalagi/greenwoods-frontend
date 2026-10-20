@@ -1,0 +1,200 @@
+.gal-admin-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.gal-admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 22px;
+}
+
+.gal-admin-tab {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #f1eadb;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.gal-admin-tab.active {
+  background: var(--green-dark);
+  color: #ffffff;
+}
+
+.gal-admin-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.gal-admin-form {
+  margin-bottom: 28px;
+  padding: 22px;
+  border: 1px solid #e2d6bd;
+  border-radius: 10px;
+  background: #fbf8f1;
+}
+
+.gal-admin-form h2 {
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.gal-admin-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 720px) {
+  .gal-admin-form-row { grid-template-columns: 1fr 1fr; }
+}
+
+.gal-admin-form label,
+.gal-admin-body label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--charcoal-muted);
+}
+
+.gal-admin-form input[type='text'],
+.gal-admin-form input:not([type]),
+.gal-admin-body input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid #d9cdb0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.gal-admin-check {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 !important;
+  font-size: 13px !important;
+  letter-spacing: 0 !important;
+  color: var(--charcoal) !important;
+}
+
+.gal-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  background: var(--ink);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gal-admin-btn.small {
+  margin-top: 8px;
+  padding: 7px 14px;
+}
+
+.gal-admin-btn:disabled,
+.gal-admin-icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gal-admin-ok { margin: 10px 0; font-size: 13px; color: #2e6b3a; }
+.gal-admin-err { margin: 10px 0; font-size: 13px; color: #b3261e; }
+
+.gal-admin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .gal-admin-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1000px) {
+  .gal-admin-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.gal-admin-card {
+  overflow: hidden;
+  border: 1px solid #eadfca;
+  border-radius: 10px;
+  background: #fbf8f1;
+}
+
+.gal-admin-card.is-hidden { opacity: 0.7; }
+
+.gal-admin-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #e8dfc9;
+}
+
+.gal-admin-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gal-admin-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(20, 20, 20, 0.8);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.gal-admin-body { padding: 14px 16px 16px; }
+
+.gal-admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.gal-admin-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #d5c29a;
+  border-radius: 4px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.gal-admin-icon.danger { color: #b3261e; border-color: #d9a7a2; }
+
+.gal-admin-empty {
+  padding: 28px 0;
+  color: var(--charcoal-muted);
+}

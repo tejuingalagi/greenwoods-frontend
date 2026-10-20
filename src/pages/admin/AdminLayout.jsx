@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { LogOut } from 'lucide-react'
 import { useAuth } from '../../auth/AuthContext'
 import './AdminLayout.css'
@@ -10,6 +10,13 @@ function AdminLayout() {
     <div className="admin-shell">
       <header className="admin-header">
         <strong className="admin-brand">Green Woods · Admin</strong>
+
+        <nav className="admin-nav">
+          <NavLink to="/admin" end>Enquiries</NavLink>
+          <NavLink to="/admin/gallery">Gallery</NavLink>
+          <NavLink to="/admin/media">Media</NavLink>
+        </nav>
+
         <div className="admin-user">
           <span>{session?.email}</span>
           <button type="button" onClick={logout}>

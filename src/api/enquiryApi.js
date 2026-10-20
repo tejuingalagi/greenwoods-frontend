@@ -13,5 +13,5 @@ export const getApiErrorMessage = (err) => {
     return Object.values(data.fieldErrors).join(' ')
   }
 
-  return data?.error || 'Something went wrong. Please try again.'
+  return data?.message || data?.error || 'Something went wrong. Please try again.'
 }

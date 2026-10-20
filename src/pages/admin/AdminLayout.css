@@ -50,3 +50,22 @@
   font-family: var(--font-display);
   color: var(--ink);
 }
+
+.admin-nav {
+  display: flex;
+  gap: 22px;
+  margin-right: auto;
+  margin-left: 32px;
+}
+
+.admin-nav a {
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.admin-nav a.active {
+  border-bottom-color: var(--terracotta);
+  color: #ffffff;
+}
