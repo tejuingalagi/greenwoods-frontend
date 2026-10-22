@@ -1,9 +1,10 @@
-import { useState } from 'react'
 import { LayoutGrid } from 'lucide-react'
 import Reveal from './Reveal'
 import './MasterPlan.css'
 import masterPlan from '../assets/master-plan.jpg'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import api from '../api/axiosInstance'
 
 // x and y are the marker position as a % of the image
 const places = [
@@ -26,6 +27,31 @@ const places = [
 function MasterPlan() {
   const [active, setActive] = useState(null)
 
+  const [masterPlanImage, setMasterPlanImage] = useState(masterPlan)
+
+useEffect(() => {
+  let cancelled = false
+
+  async function loadMasterPlan() {
+    try {
+      const response = await api.get('/site-images')
+      const imageUrl = response.data?.MASTER_PLAN
+
+      if (!cancelled && imageUrl) {
+        setMasterPlanImage(imageUrl)
+      }
+    } catch (error) {
+      console.error('Could not load master plan image:', error)
+    }
+  }
+
+  loadMasterPlan()
+
+  return () => {
+    cancelled = true
+  }
+}, [])
+
   return (
     <section className="plan" id="master-plan">
       <div className="container">
@@ -45,9 +71,9 @@ function MasterPlan() {
           <Reveal direction="left">
             <div className="plan-map">
               <img
-                src={masterPlan}
-                alt="Green Woods master plan"
-              />
+  src={masterPlanImage}
+  alt="Green Woods master plan"
+/>
 
               {places.map((p) => (
                 <button

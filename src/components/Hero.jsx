@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import './Hero.css'
@@ -5,22 +6,56 @@ import slide1 from '../assets/hero.webp'
 import slide2 from '../assets/hero1.webp'
 import slide3 from '../assets/hero2.webp'
 import { Link } from 'react-router-dom'
+import api from '../api/axiosInstance'
 
-const slides = [slide1, slide2, slide3]
+const defaultSlides = [slide1, slide2, slide3]
 
 function Hero({ onSiteVisit }) {
   const [current, setCurrent] = useState(0)
+  const [slides, setSlides] = useState(defaultSlides)
 
-  // Every time the slide changes, wait 5 seconds, then go to the next one
+  // Load the latest hero image URLs from the backend.
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadSiteImages() {
+      try {
+        const response = await api.get('/site-images')
+        const siteImages = response.data || {}
+
+        const updatedSlides = [
+          siteImages.HERO_1 || slide1,
+          siteImages.HERO_2 || slide2,
+          siteImages.HERO_3 || slide3,
+        ]
+
+        if (!cancelled) {
+          setSlides(updatedSlides)
+        }
+      } catch (error) {
+        console.error('Could not load hero images:', error)
+        // Keep the bundled images if the API is unavailable.
+      }
+    }
+
+    loadSiteImages()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  // Automatically move to the next slide every 5 seconds.
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
     }, 5000)
 
     return () => clearTimeout(timer)
-  }, [current])
+  }, [current, slides.length])
 
-  const goNext = () => setCurrent((prev) => (prev + 1) % slides.length)
+  const goNext = () =>
+    setCurrent((prev) => (prev + 1) % slides.length)
 
   const goPrev = () =>
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
@@ -31,7 +66,7 @@ function Hero({ onSiteVisit }) {
         <div
           key={index}
           className={`hero-slide ${index === current ? 'active' : ''}`}
-          style={{ backgroundImage: `url(${image})` }}
+          style={{ backgroundImage: `url("${image}")` }}
         />
       ))}
 
@@ -70,7 +105,7 @@ function Hero({ onSiteVisit }) {
           1100-acre urban reserve forest.
         </p>
 
-                <div className="hero-buttons">
+        <div className="hero-buttons">
           <button className="hero-btn-solid" onClick={onSiteVisit}>
             Book a Site Visit
           </button>

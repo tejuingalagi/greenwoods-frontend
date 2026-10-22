@@ -20,6 +20,7 @@ import AmenitiesPage from './pages/AmenitiesPage'
 import SiteVisitModal from './components/SiteVisitModal'
 import AdminMedia from './pages/admin/AdminMedia'
 import AdminGallery from './pages/admin/AdminGallery'
+import AdminSiteImages from "./pages/admin/AdminSiteImages";
 
 
 function PublicSite() {
@@ -80,6 +81,7 @@ function App() {
           <Route index element={<AdminEnquiries />} />
           <Route path="gallery" element={<AdminGallery />} />
           <Route path="media" element={<AdminMedia />} />
+          <Route path="site-images" element={<AdminSiteImages />} />
           <Route
             path="*"
             element={<Navigate to="/admin" replace />}

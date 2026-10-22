@@ -4,12 +4,14 @@ import Reveal from '../components/Reveal'
 import FloorPlanForm from '../components/FloorPlanForm'
 import { floorPlanGroups } from '../data/floorPlanData'
 import './FloorPlansPage.css'
+import useSiteImages from "../hooks/useSiteImages";
 
 const allPlans = floorPlanGroups.flatMap((group) => group.plans)
 
 function FloorPlansPage({ onSiteVisit }) {
   const [selected, setSelected] = useState('')
   const formRef = useRef(null)
+  const siteImages = useSiteImages();
 
   const choosePlan = (name) => {
     setSelected(name)
@@ -45,9 +47,18 @@ function FloorPlansPage({ onSiteVisit }) {
                   {group.plans.map((plan) => (
                     <article className="fp-card" key={plan.name}>
                       <div className="fp-media">
-                        {plan.image ? (
-                          <img src={plan.image} alt={`${plan.name} floor plan`} loading="lazy" />
-                        ) : (
+                        {(siteImages[`FLOOR_PLAN_${plan.name}`] || plan.image) ? (
+  <img
+    src={siteImages[`FLOOR_PLAN_${plan.name}`] || plan.image}
+    alt={`${plan.name} floor plan`}
+    loading="lazy"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+    }}
+  />
+) : (
                           <div className="fp-placeholder">
                             <LayoutGrid size={34} />
                             <span>Floor plan</span>

@@ -15,6 +15,7 @@ function AdminLayout() {
           <NavLink to="/admin" end>Enquiries</NavLink>
           <NavLink to="/admin/gallery">Gallery</NavLink>
           <NavLink to="/admin/media">Media</NavLink>
+          <NavLink to="/admin/site-images">Site Images</NavLink>
         </nav>
 
         <div className="admin-user">

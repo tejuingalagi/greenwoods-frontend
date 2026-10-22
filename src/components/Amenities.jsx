@@ -8,6 +8,7 @@ import clubhouse from '../assets/clubhouse.webp'
 import pool from '../assets/landscape-pool.webp'
 import { Link } from 'react-router-dom'
 import { amenityList } from '../data/amenitiesData'
+import useSiteImages from "../hooks/useSiteImages";
 
 const amenities = [
   { icon: Zap, name: 'Centralized A/c Gym' },
@@ -25,6 +26,7 @@ const amenities = [
 ]
 
 function Amenities() {
+  const siteImages = useSiteImages();
   return (
     <section className="amenities" id="amenities">
       <div className="container">
@@ -39,10 +41,16 @@ function Amenities() {
 
         <div className="amenities-images">
           <Reveal direction="left">
-            <img src={clubhouse} alt="Green Woods Clubhouse" />
+            <img
+  src={siteImages.AMENITIES_CLUBHOUSE || clubhouse}
+  alt="Green Woods Clubhouse"
+/>
           </Reveal>
           <Reveal direction="right" delay={120}>
-            <img src={pool} alt="Terrace swimming pool and deck" />
+            <img
+  src={siteImages.AMENITIES_POOL || pool}
+  alt="Terrace swimming pool and deck"
+/>
           </Reveal>
         </div>
 
