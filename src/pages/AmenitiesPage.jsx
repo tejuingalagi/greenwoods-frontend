@@ -37,17 +37,23 @@ function AmenitiesPage() {
 
                 <div className="amen-grid">
                   {group.items.map((item) => {
-                    let image = item.image;
+                    
+let image = siteImages[`AMENITY_${item.id}`] || item.image;
 
-                    if (item.name.toLowerCase().includes("clubhouse")) {
-                      image = siteImages.AMENITIES_CLUBHOUSE || image;
-                    }
+if (item.name.toLowerCase().includes("swimming pool")) {
+  image =
+    siteImages[`AMENITY_${item.id}`] ||
+    siteImages.AMENITIES_POOL ||
+    item.image;
+}
 
-                    if (
-                      item.name.toLowerCase().includes("swimming pool")
-                    ) {
-                      image = siteImages.AMENITIES_POOL || image;
-                    }
+if (item.name.toLowerCase().includes("clubhouse")) {
+  image =
+    siteImages[`AMENITY_${item.id}`] ||
+    siteImages.AMENITIES_CLUBHOUSE ||
+    item.image;
+}
+
 
                     return (
                       <article className="amen-card" key={item.id}>
